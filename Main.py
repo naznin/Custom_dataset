@@ -7,16 +7,16 @@ from torch.utils.data import Dataset, DataLoader
 
 class CustomDataset(Dataset):
 	def __init__(self):
-		self.imgs_path = "Dog_Cat_Dataset/"
+		self.imgs_path = "Dataset/"
 		file_list = glob.glob(self.imgs_path + "*")
 		print(file_list)
 		self.data = []
 		for class_path in file_list:
 			class_name = class_path.split("/")[-1]
-			for img_path in glob.glob(class_path + "/*.jpeg"):
+			for img_path in glob.glob(class_path + "/*.jpg"):
 				self.data.append([img_path, class_name])
 		print(self.data)
-		self.class_map = {"dogs" : 0, "cats": 1}
+		self.class_map = {"animal" : 0, "laptop": 1}
 		self.img_dim = (416, 416)
 	
 	def __len__(self):
